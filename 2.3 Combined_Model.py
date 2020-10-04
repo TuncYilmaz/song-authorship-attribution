@@ -37,12 +37,12 @@ from keras.callbacks import EarlyStopping
 # read important variables (datasets)
 print('Loading y_label datasets...')
 typename = "character/"
-y_tr_genre = readPickle("y_tr_genre",typename)
-y_tr_artist = readPickle("y_tr_artist",typename)
-y_val_genre = readPickle("y_val_genre",typename)
-y_val_artist = readPickle("y_val_artist",typename)
-y_te_genre = readPickle("y_te_genre",typename)
-y_te_artist = readPickle("y_te_artist",typename)
+y_tr_genre = readPickle("y_tr_genre_equal",typename)
+y_tr_artist = readPickle("y_tr_artist_equal",typename)
+y_val_genre = readPickle("y_val_genre_equal",typename)
+y_val_artist = readPickle("y_val_artist_equal",typename)
+y_te_genre = readPickle("y_te_genre_equal",typename)
+y_te_artist = readPickle("y_te_artist_equal",typename)
 
 
 '''---------------------------------------------------------------'''
@@ -133,19 +133,25 @@ def create_model(input_type, label_type, embedding_type, nb_filters, nb_dense_ou
     z = Dropout(0.5)(Dense(nb_dense_outputs, activation='relu')(conv5))
     z = Dropout(0.5)(Dense(nb_dense_outputs, activation='relu')(z))
     
-    # decide which sets will be used and the number of output units, depending on the label type
+     # decide which sets will be used and the number of output units, depending on the label type
     if label_type == 'artist':
         y_tr = y_tr_artist
         y_te = y_te_artist
         y_val = y_val_artist
         output_size = 120
+        x_tr = readPickle("x_tr_artist_equal",typename)
+        x_val = readPickle("x_val_artist_equal",typename)
+        x_te = readPickle("x_te_artist_equal",typename)
 
     elif label_type == 'genre':
         y_tr = y_tr_genre
         y_te = y_te_genre
         y_val = y_val_genre
+        x_tr = readPickle("x_tr_genre_equal",typename)
+        x_val = readPickle("x_val_genre_equal",typename)
+        x_te = readPickle("x_te_genre_equal",typename)
         output_size = 12
-
+        
 
     # Output dense layer with softmax activation
     pred = Dense(output_size, activation='softmax', name='output')(z)
@@ -159,19 +165,15 @@ def create_model(input_type, label_type, embedding_type, nb_filters, nb_dense_ou
     
     name = str(input_type)+"_"+str(embedding_type)+"_"+str(label_type)+"_"+str(batch_size)+"batch_"+str(nb_epochs)+"epoch_"+str(early_stopping)+"Stop_"+"filters="+str(filters)+"_pools="+str(pools)+"_"+str(nb_filters)+"filters_"+str(nb_dense_outputs)+"dense_outputs_"+str(maxlen)+"length"
     
-    return model, name, early_stopping, y_tr, y_val, y_te, batch_size, nb_epochs, typename
+    return model, name, early_stopping, x_tr, x_val, x_te, y_tr, y_val, y_te, batch_size, nb_epochs, typename
 
     
 # create the model, model name and the early stopping option
 print('Building the model...')
 
-model, name, early_stopping, y_tr, y_val, y_te, batch_size, nb_epochs, typename = create_model(input_type = "sub_word", label_type = "artist", embedding_type = "pre_trained", nb_filters = 112, nb_dense_outputs = 2048, filters = [3, 3, 3, 3, 3, 3], batch_size = 30, nb_epochs = 40, early_stopping = 4, pools = [3,3,3], maxlen = 3674, vocab_size = 10000, embedding_dim = 50)
-
-
-print('Loading training, validation and test inputs...') 
-x_tr = readPickle("x_tr",typename)
-x_val = readPickle("x_val",typename)
-x_te = readPickle("x_te",typename)
+# (in the char model, maxlen = 11111, vocab_size = 160, embedding_dim = 300)
+# (in the sub_word model, maxlen = 3674, vocab_size = 10000, embedding_dim = 50)
+model, name, early_stopping, x_tr, x_val, x_te, y_tr, y_val, y_te, batch_size, nb_epochs, typename = create_model(input_type = "char", label_type = "genre", embedding_type = "pre_trained", nb_filters = 112, nb_dense_outputs = 3072, filters = [7, 7, 3, 3, 3, 3], batch_size = 30, nb_epochs = 40, early_stopping = 4, pools = [7,7,7], maxlen = 11111, vocab_size = 160, embedding_dim = 300)
 
 model.summary()
 print('Fit model...')
@@ -190,7 +192,7 @@ predictions = model.predict(x_te)
 print(np.argmax(predictions, axis=-1))
 print(np.argmax(y_te, axis=-1))
 
-writePickle(predictions, "predictions/Predictions_"+str(name))
+writePickle(predictions, "predictions/PredictionsEqual_"+str(name))
 
 # show the accuracy of the trained model on test set
 score = model.evaluate(x_te, y_te, verbose=0)
@@ -198,7 +200,6 @@ print('Test loss:', score[0])
 print('Test accuracy:', score[1])
 
 print("Saving the model and its history...")
-model.save("saved_models/"+str(name))
-with open('pickle_vars/history/'+str(name), 'wb') as file_pi:
+model.save("saved_models/"+"Equal"+str(name))
+with open('pickle_vars/history/'+"Equal"+str(name), 'wb') as file_pi:
         pickle.dump(history.history, file_pi)
-#writePickle(history,"history/History_"+str(name))
