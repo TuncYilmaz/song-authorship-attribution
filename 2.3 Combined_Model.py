@@ -14,8 +14,6 @@ def readPickle(fname, tname):
 
 # import necessary packages
 print("..loading packages")
-#from __future__ import print_function
-#from __future__ import division
 
 import numpy as np
 import pandas as pd
@@ -133,7 +131,7 @@ def create_model(input_type, label_type, embedding_type, nb_filters, nb_dense_ou
     z = Dropout(0.5)(Dense(nb_dense_outputs, activation='relu')(conv5))
     z = Dropout(0.5)(Dense(nb_dense_outputs, activation='relu')(z))
     
-     # decide which sets will be used and the number of output units, depending on the label type
+    # decide which sets will be used and the number of output units, depending on the label type
     if label_type == 'artist':
         y_tr = y_tr_artist
         y_te = y_te_artist
@@ -171,9 +169,8 @@ def create_model(input_type, label_type, embedding_type, nb_filters, nb_dense_ou
 # create the model, model name and the early stopping option
 print('Building the model...')
 
-# (in the char model, maxlen = 11111, vocab_size = 160, embedding_dim = 300)
-# (in the sub_word model, maxlen = 3674, vocab_size = 10000, embedding_dim = 50)
-model, name, early_stopping, x_tr, x_val, x_te, y_tr, y_val, y_te, batch_size, nb_epochs, typename = create_model(input_type = "char", label_type = "genre", embedding_type = "pre_trained", nb_filters = 112, nb_dense_outputs = 3072, filters = [7, 7, 3, 3, 3, 3], batch_size = 30, nb_epochs = 40, early_stopping = 4, pools = [7,7,7], maxlen = 11111, vocab_size = 160, embedding_dim = 300)
+model, name, early_stopping, x_tr, x_val, x_te, y_tr, y_val, y_te, batch_size, nb_epochs, typename = create_model(input_type = "sub_word", label_type = "genre", embedding_type = "pre_trained", nb_filters = 112, nb_dense_outputs = 3072, filters = [3, 3, 3, 3, 3, 3], batch_size = 30, nb_epochs = 40, early_stopping = 4, pools = [7,7,7], maxlen = 3674, vocab_size = 10000, embedding_dim = 50)
+
 
 model.summary()
 print('Fit model...')
