@@ -169,7 +169,7 @@ def create_model(input_type, label_type, embedding_type, nb_filters, nb_dense_ou
 # create the model, model name and the early stopping option
 print('Building the model...')
 
-model, name, early_stopping, x_tr, x_val, x_te, y_tr, y_val, y_te, batch_size, nb_epochs, typename = create_model(input_type = "sub_word", label_type = "genre", embedding_type = "pre_trained", nb_filters = 112, nb_dense_outputs = 3072, filters = [3, 3, 3, 3, 3, 3], batch_size = 30, nb_epochs = 40, early_stopping = 4, pools = [7,7,7], maxlen = 3674, vocab_size = 10000, embedding_dim = 50)
+model, name, early_stopping, x_tr, x_val, x_te, y_tr, y_val, y_te, batch_size, nb_epochs, typename = create_model(input_type = "char", label_type = "artist", embedding_type = "pre_trained", nb_filters = 256, nb_dense_outputs = 2048, filters = [3, 3, 3, 3, 3, 3], batch_size = 30, nb_epochs = 40, early_stopping = 4, pools = [7,7,7], maxlen = 11111, vocab_size = 160, embedding_dim = 300)
 
 
 model.summary()
@@ -197,6 +197,7 @@ print('Test loss:', score[0])
 print('Test accuracy:', score[1])
 
 print("Saving the model and its history...")
-model.save("saved_models/"+"Equal"+str(name))
+model.save("saved_models/"+"Equal"+str(name)+".keras")
 with open('pickle_vars/history/'+"Equal"+str(name), 'wb') as file_pi:
         pickle.dump(history.history, file_pi)
+#writePickle(history,"history/History_"+str(name))
