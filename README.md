@@ -26,9 +26,20 @@ Please follow the enumeration of file names to have an hierarchical and chronolo
 - also yields certain dictionaries used for indexing purposes
 
 [2.1_Character_Model_Preprocessing.ipynb](../master/2.Mini%20Models/2.1_Character_Model_Preprocessing.ipynb):
-- 
-- 
-- 
+- forms character embeddings that are derived from GloVe word embeddings. specifically uses the glove.6B.300d.txt model
+- creates a collection of (lowercase) characters that exists in the complete dataset and also in the GloVe word embeddings
+- converts the whole dataset samples into numbers representing known (and also unknown) characters in our collection
+- prepares the embedding matrix for all characters, retrieved from the embedding indices in the initial GloVe model
+- preprocesses the dataset to get ready for keras model input requirements (padding, data-splitting, etc.)
+- saves important model input variables to pickle files
+
+[2.2_Sub_Word_Model_Preprocessing.ipynb](../master/2.Mini%20Models/2.2_Sub_Word_Model_Preprocessing.ipynb):
+- forms sub-word embeddings that are derived from the [sub-word level embedding package](https://github.com/bheinzerling/bpemb). specifically uses the English BPEmb model with default vocabulary size (10k) and 50-dimensional embeddings
+- creates a collection of sub-word pieces recognized by the BPEmb package
+- converts the whole dataset samples into sub-word representations
+- preprocesses the dataset to get ready for keras model input requirements (padding, data-splitting, etc.)
+- prepares the 50-dimensional embedding matrix for all sub-word pieces
+- saves important model input variables to pickle files
 
 ../master/2.Mini%20Models/2.3.3_Overall_Model_Training.py
 ../master/2.Mini%20Models/2.3.3_Overall_Model_Training.py
