@@ -1,6 +1,9 @@
 
 '''!!! GO BELOW TO FUNCTION CALL FOR CHANGING VARIABLES AND OUTPUTS !!!'''
 
+
+'''!!! GO BELOW TO FUNCTION CALL FOR CHANGING VARIABLES AND OUTPUTS !!!'''
+
 # import necessary print packages
 from __future__ import print_function
 from __future__ import division
@@ -42,15 +45,20 @@ from keras.callbacks import EarlyStopping
 
 # read important variables
 print('Loading data and other variables...')
-x_tr = readPickle("x_tr")
-y_tr_genre = readPickle("y_tr_genre")
-y_tr_artist = readPickle("y_tr_artist")
-x_val = readPickle("x_val")
-y_val_genre = readPickle("y_val_genre")
-y_val_artist = readPickle("y_val_artist")
-x_te = readPickle("x_te")
-y_te_genre = readPickle("y_te_genre")
-y_te_artist = readPickle("y_te_artist")
+x_tr_genre = readPickle("x_tr_genre_equal")
+x_tr_artist = readPickle("x_tr_artist_equal")
+y_tr_genre = readPickle("y_tr_genre_equal")
+y_tr_artist = readPickle("y_tr_artist_equal")
+
+x_val_genre = readPickle("x_val_genre_equal")
+x_val_artist = readPickle("x_val_artist_equal")
+y_val_genre = readPickle("y_val_genre_equal")
+y_val_artist = readPickle("y_val_artist_equal")
+
+x_te_genre = readPickle("x_te_genre_equal")
+x_te_artist = readPickle("x_te_artist_equal")
+y_te_genre = readPickle("y_te_genre_equal")
+y_te_artist = readPickle("y_te_artist_equal")
       
 # Embedding layer Initialization
 embedding_weights = readPickle("embedding_weights")
@@ -58,7 +66,7 @@ embedding_weights = readPickle("embedding_weights")
 # np.random.seed(123)  # for reproducibility
 
 # Whether to save model parameters
-save = False
+save = True
 model_name_path = 'params/model_name.json'
 model_weights_path = 'params/model_weights.h5'
 
@@ -73,27 +81,33 @@ embedding_dim = 50
 batch_size = 32
 nb_epoch = 10
 # for conv layers
-nb_filter = 256
+nb_filter = 112
 # Number of units in the dense layer
 dense_outputs = 1024
 # Conv layer kernel size
-filter_kernels = [7, 7, 3, 3, 3, 3]
+filter_kernels = [3, 3, 3, 3, 3, 3]
 
 
 # Compile/fit params
-batch_size = 120
+batch_size = 30
 nb_epoch = 40
 
 '''!!!!!'''
 # artist or genre? # if the model aims at artist labeling, the below value gets true
 artist = False
 if artist:
+    x_tr = x_tr_artist
+    x_val = x_val_artist
+    x_te = x_te_artist
     y_tr = y_tr_artist
     y_te = y_te_artist
     y_val = y_val_artist
     output_size = 120
     name = "artist_model_"+str(filter_kernels[0])+"filter_size_"+str(nb_filter)+"filters_"+str(batch_size)+"batch_"+str(nb_epoch)+"epoch"
 else:
+    x_tr = x_tr_genre
+    x_val = x_val_genre
+    x_te = x_te_genre
     y_tr = y_tr_genre
     y_te = y_te_genre
     y_val = y_val_genre
@@ -124,11 +138,11 @@ def create_model(filter_kernels, dense_outputs, maxlen, vocab_size, nb_filter, o
     conv = Convolution1D(filters=nb_filter, kernel_size=filter_kernels[0], kernel_initializer=initializer,
                          padding='valid', activation='relu',
                          input_shape=(maxlen, vocab_size))(embedded)
-    conv = MaxPooling1D(pool_size=3)(conv)
+    conv = MaxPooling1D(pool_size=7)(conv)
 
     conv1 = Convolution1D(filters=nb_filter, kernel_size=filter_kernels[1], kernel_initializer=initializer,
                           padding='valid', activation='relu')(conv)
-    conv1 = MaxPooling1D(pool_size=3)(conv1)
+    conv1 = MaxPooling1D(pool_size=7)(conv1)
 
     conv2 = Convolution1D(filters=nb_filter, kernel_size=filter_kernels[2], kernel_initializer=initializer,
                           padding='valid', activation='relu')(conv1)
@@ -141,7 +155,7 @@ def create_model(filter_kernels, dense_outputs, maxlen, vocab_size, nb_filter, o
 
     conv5 = Convolution1D(filters=nb_filter, kernel_size=filter_kernels[5], kernel_initializer=initializer,
                           padding='valid', activation='relu')(conv4)
-    conv5 = MaxPooling1D(pool_size=3)(conv5)
+    conv5 = MaxPooling1D(pool_size=7)(conv5)
     conv5 = Flatten()(conv5)
 
     # Two dense layers with dropout of .5
@@ -182,4 +196,4 @@ score = model.evaluate(x_te, y_te, verbose=0)
 print('Test loss:', score[0])
 print('Test accuracy:', score[1])
 
-model.save("saved_models/subword_"+str(name))
+model.save("saved_models/subword_"+str(name)+".keras")
