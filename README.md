@@ -51,19 +51,18 @@ Please follow the enumeration of file names to have an hierarchical and chronolo
 - script outputs saved files such as text predictions, model parameters and model history
 - needs debugging for version that doesn't involve early stopping
 
-
 [2.3.3_Overall_Model_Training.py](../master/2.Mini%20Models/2.3.3_Overall_Model_Training.py): script that combines [2.3.1_Character_Model.py](../master/2.Mini%20Models/2.3.1_Character_Model.py) and [2.3.2_Sub_Word_Model.py](../master/2.Mini%20Models/2.3.2_Sub_Word_Model.py) in a single function
 - model parameters can be tuned after line 170
 - script outputs saved files such as text predictions, model parameters and model history
 - needs debugging for version that doesn't involve early stopping
 - can be modified further to include automatic parameter value assignment (such as vocab_size = 160 if input_type == 'char')
 
+[2.3.4_Prediction_Evaluation.ipynb](../master/2.Mini%20Models/2.3.4_Prediction_Evaluation.ipynb):
+- takes trained model predictions and history as its input
+- 16 model prediction files are uploaded under [predictions folder](../master/2.Mini%20Models/pickle_vars/predictions); 4 model history files are uploaded under [history folder](../master/2.Mini%20Models/pickle_vars/history); test labels for genre and artist labels separately are uploaded under [character](../master/2.Mini%20Models/pickle_vars/character) and [sub_word](../master/2.Mini%20Models/pickle_vars/sub_word) folders
+With these files, the evaluation script can work; but for generating other evaluations, variables should be generated via different files!
+- uses certain functions to calculate: model accuracies; confusion matrices for different label types; precision, recall and f-score values for models; plot accuracy and loss plots across model epochs; precision and recall plots for genre label models; refined test accuracy results
 
-../master/2.Mini%20Models/2.3.3_Overall_Model_Training.py
-../master/2.Mini%20Models/2.3.3_Overall_Model_Training.py
-../master/2.Mini%20Models/2.3.4_Prediction_Evaluation.ipynb
-
-++ add folders for model parameters
 
 ### B. Files:
 -------
