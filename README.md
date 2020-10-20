@@ -8,5 +8,5 @@ Please follow the enumeration of file names to have an hierarchical and chronolo
 
 "1.Dataset Preparation.ipynb": 
 
-[I'm a relative reference to a repository file](../blob/master/1.Dataset&#32;Preparation)
+[I'm a relative reference to a repository file](../blob/master/1.Dataset&#32;Preparation.ipynb)
 
