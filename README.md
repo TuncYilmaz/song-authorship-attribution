@@ -41,11 +41,29 @@ Please follow the enumeration of file names to have an hierarchical and chronolo
 - prepares the 50-dimensional embedding matrix for all sub-word pieces
 - saves important model input variables to pickle files
 
-../master/2.Mini%20Models/2.3.3_Overall_Model_Training.py
-../master/2.Mini%20Models/2.3.3_Overall_Model_Training.py
+[2.3.1_Character_Model.py](../master/2.Mini%20Models/2.3.1_Character_Model.py): script that builds the model architecture with character embeddings as the input
+- model parameters can be tuned after line 160
+- script outputs saved files such as text predictions, model parameters and model history
+- needs debugging for version that doesn't involve early stopping
+
+[2.3.2_Sub_Word_Model.py](../master/2.Mini%20Models/2.3.2_Sub_Word_Model.py): script that builds the model architecture with sub-word embeddings as the input
+- model parameters can be tuned after line 172
+- script outputs saved files such as text predictions, model parameters and model history
+- needs debugging for version that doesn't involve early stopping
+
+
+[2.3.3_Overall_Model_Training.py](../master/2.Mini%20Models/2.3.3_Overall_Model_Training.py): script that combines [2.3.1_Character_Model.py](../master/2.Mini%20Models/2.3.1_Character_Model.py) and [2.3.2_Sub_Word_Model.py](../master/2.Mini%20Models/2.3.2_Sub_Word_Model.py) in a single function
+- model parameters can be tuned after line 170
+- script outputs saved files such as text predictions, model parameters and model history
+- needs debugging for version that doesn't involve early stopping
+- can be modified further to include automatic parameter value assignment (such as vocab_size = 160 if input_type == 'char')
+
+
 ../master/2.Mini%20Models/2.3.3_Overall_Model_Training.py
 ../master/2.Mini%20Models/2.3.3_Overall_Model_Training.py
 ../master/2.Mini%20Models/2.3.4_Prediction_Evaluation.ipynb
+
+++ add folders for model parameters
 
 ### B. Files:
 -------
