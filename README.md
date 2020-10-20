@@ -59,10 +59,15 @@ Please follow the enumeration of file names to have an hierarchical and chronolo
 
 [2.3.4_Prediction_Evaluation.ipynb](../master/2.Mini%20Models/2.3.4_Prediction_Evaluation.ipynb):
 - takes trained model predictions and history as its input
-- 16 model prediction files are uploaded under [predictions folder](../master/2.Mini%20Models/pickle_vars/predictions); 4 model history files are uploaded under [history folder](../master/2.Mini%20Models/pickle_vars/history); test labels for genre and artist labels separately are uploaded under [character](../master/2.Mini%20Models/pickle_vars/character) and [sub_word](../master/2.Mini%20Models/pickle_vars/sub_word) folders
+- 16 model prediction files are uploaded under [predictions folder](../master/2.Mini%20Models/pickle_vars/predictions); 4 model history files are uploaded under [history folder](../master/2.Mini%20Models/pickle_vars/history); test labels for genre and artist labels separately are uploaded under [character](../master/2.Mini%20Models/pickle_vars/character) and [sub_word](../master/2.Mini%20Models/pickle_vars/sub_word) folders.
 With these files, the evaluation script can work; but for generating other evaluations, variables should be generated via different files!
 - uses certain functions to calculate: model accuracies; confusion matrices for different label types; precision, recall and f-score values for models; plot accuracy and loss plots across model epochs; precision and recall plots for genre label models; refined test accuracy results
 
+[2.4.1_Occlusion_Probabilities.py](../master/2.Mini%20Models/2.4.1_Occlusion_Probabilities.py): 
+- for any given selected model, partially occludes the input areas one by one to record the effect of occlusion on output predictions.
+- the script takes one model and one label at a time.
+- the output occlusion probabilities are transfered to *OTHER OCCLUSION FILE HERE*
+- by default the script handles occlusion with a span of 3 input areas. This number can be modified or can be arranged as modifiable in future versions!
 
 ### B. Files:
 -------
