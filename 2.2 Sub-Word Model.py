@@ -1,7 +1,3 @@
-
-'''!!! GO BELOW TO FUNCTION CALL FOR CHANGING VARIABLES AND OUTPUTS !!!'''
-
-
 '''!!! GO BELOW TO FUNCTION CALL FOR CHANGING VARIABLES AND OUTPUTS !!!'''
 
 # import necessary print packages
@@ -197,3 +193,5 @@ print('Test loss:', score[0])
 print('Test accuracy:', score[1])
 
 model.save("saved_models/subword_"+str(name)+".keras")
+with open('pickle_vars/history/'+str(name), 'wb') as file_pi:
+        pickle.dump(history.history, file_pi)
