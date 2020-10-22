@@ -93,11 +93,11 @@ With these files, the evaluation script can work; but for generating other evalu
 -------
 
 - [2.Mini Models](../master/2.Mini%20Models): includes files and scripts used for generating the models that take a sub dataset of 12000 lyrics.
-  - [cosine_model_pickle_vars](../master/2.Mini%20Models/cosine_model_pickle_vars):
-  - [occlusion_graphs](../master/2.Mini%20Models/occlusion_graphs):
-  - [pickle_vars](../master/2.Mini%20Models/pickle_vars):
-    - [character](../master/2.Mini%20Models/pickle_vars/character):
-    - [sub_word](../master/2.Mini%20Models/pickle_vars/sub_word):
-    - [history](../master/2.Mini%20Models/pickle_vars/history):
-    - [predictions](../master/2.Mini%20Models/pickle_vars/predictions):
-  - [saved_models](../master/2.Mini%20Models/saved_models):
+  - [cosine_model_pickle_vars](../master/2.Mini%20Models/cosine_model_pickle_vars): the folder that contains the naive baseline model variables. currently empty due to file size limit. existing model scripts direct to this folder.
+  - [occlusion_graphs](../master/2.Mini%20Models/occlusion_graphs): contains a video about how occlusions work. additionally, occlusion plots are saved in this folder if triggerred by scripts.
+  - [pickle_vars](../master/2.Mini%20Models/pickle_vars): the folder in which mini model variables are saved. contains the following sub-folders:
+    - [character](../master/2.Mini%20Models/pickle_vars/character): character model variables are saved here.
+    - [sub_word](../master/2.Mini%20Models/pickle_vars/sub_word): sub-word model variables are saved here.
+    - [history](../master/2.Mini%20Models/pickle_vars/history): a selection of model history files are saved here.
+    - [predictions](../master/2.Mini%20Models/pickle_vars/predictions): a selection of model prediction files are saved here.
+  - [saved_models](../master/2.Mini%20Models/saved_models): the actual models (with parameters, weights, etc.) are saved here. due to size restrictions only one sample model file is kept. running model training scripts would save additional model files in this folder.
