@@ -64,10 +64,16 @@ With these files, the evaluation script can work; but for generating other evalu
 - uses certain functions to calculate: model accuracies; confusion matrices for different label types; precision, recall and f-score values for models; plot accuracy and loss plots across model epochs; precision and recall plots for genre label models; refined test accuracy results
 
 [2.4.1_Occlusion_Probabilities.py](../master/2.Mini%20Models/2.4.1_Occlusion_Probabilities.py): 
-- for any given selected model, partially occludes the input areas one by one to record the effect of occlusion on output predictions.
+- for any given selected model, partially occludes the input areas one by one to record the effect of occlusion on output predictions. to have an idea about how occlusions work, please check out the short video at the very beginning of this [notebook](../master/2.Mini%20Models/2.4.2_1D_Genre_Occlusions.ipynb).
 - the script takes one model and one label at a time.
-- the output occlusion probabilities are transfered to *OTHER OCCLUSION FILE HERE*
+- it iterates over all model inputs and their respective predicted labels. for any given input, if the top two model predictions contain our desired label, then the scripts starts occluding the input piece by piece, and record how the ouput probability for that label changes with respect to each input piece. with each iteration, the findings are cumulatively recorded in an occlusion probability dictionary for that label specifically, where keys are input pieces and values are lists of probability changes.
+- the output occlusion probabilities are transfered to [2.4.2_1D_Genre_Occlusions.ipynb](../master/2.Mini%20Models/2.4.2_1D_Genre_Occlusions.ipynb)
 - by default the script handles occlusion with a span of 3 input areas. This number can be modified or can be arranged as modifiable in future versions!
+
+[2.4.2_1D_Genre_Occlusions.ipynb](../master/2.Mini%20Models/2.4.2_1D_Genre_Occlusions.ipynb): 
+- in the first part, the script shows how to generate occlusion graphs for any given input. as an example, the script takes a correctly labeled test input (from any of our working models) and applies a 3-piece-span occlusion function to record how each input piece actually effects the outcome. then the input is depicted in a 2D heatmap in which dark colors signify high positive effects (= high negative probability changes) and bright colors signify negative or no effects.
+- in the second part, the script takes the occlusion probability dictionaries for each genre that were calculated by [2.4.1_Occlusion_Probabilities.py](../master/2.Mini%20Models/2.4.1_Occlusion_Probabilities.py), and plots the most effective 40 inputs pieces (20 with negative and 20 with positive effects) for each genre label separately. feel free to play with the plot configurations to create your own analysis.
+
 
 ### B. Files:
 -------
