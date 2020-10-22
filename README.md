@@ -1,5 +1,7 @@
 # Song-Authorship-Attribution
-Thesis work on Song Authorship Attribution by analyzing linguistic features in song lyrics
+Thesis work on Song Authorship Attribution by analyzing linguistic features in song lyrics.
+
+Aims to collect a comprehensive lyrics dataset and a corresponding song metadata, preprocess the data on character, sub-word and phoneme level, run several CNN models and capture similar distribution over the input data.
 
 Please follow the enumeration of file names to have an hierarchical and chronological path in the project construction. 
 
@@ -7,21 +9,21 @@ Please follow the enumeration of file names to have an hierarchical and chronolo
 -------
 
 
-[1.Dataset Preparation.ipynb](../master/1.Dataset&#32;Preparation.ipynb): 
+[1_Dataset_Preparation.ipynb](../master/1_Dataset_Preparation.ipynb): 
 - takes the complete Wasabi song metadata csv file as an input and performs an initial preprocessing. this csv file is around 5 gb, and cannot be uploaded due to size restrictions. please contact me for the csv file
-- by using lyricwikia, retrieves actual song lyrics. records everything in a dictionary. uses the helper [script](../master/1.1Helper_Lyrics_Retriever.py) to do that.
+- by using lyricwikia, retrieves actual song lyrics. records everything in a dictionary. uses the helper [script](../master/1.1_Helper_Lyrics_Retriever.py) to do that.
 - performs additional preprocessing such as removing non-English songs, dealing with N\A genre values, etc.
 - contains a comprehensive genre mapping dictionary which maps all genres to 14 comprehensive parent genre classes
 - using the refined and preprocessed dataset version, plots certain graphs to analyze particular data statistics
 
-[1.1Helper_Lyrics_Retriever.py](../master/1.1Helper_Lyrics_Retriever.py): works as a helper script for [1.Dataset Preparation.ipynb](../master/1.Dataset&#32;Preparation.ipynb)
-- takes an initial metadata dictionary from [1.Dataset Preparation.ipynb](../master/1.Dataset&#32;Preparation.ipynb)
+[1.1_Helper_Lyrics_Retriever.py](../master/1.1_Helper_Lyrics_Retriever.py): works as a helper script for [1_Dataset_Preparation.ipynb](../master/1_Dataset_Preparation.ipynb)
+- takes an initial metadata dictionary from [1_Dataset_Preparation.ipynb](../master/1_Dataset_Preparation.ipynb)
 - gets lyrics when possible from lyricwikia
 - calculates certain additional metadata such as song_length, line_length etc.
-- returns (saves) the more comprehensive metadata dictionary version for later use by [1.Dataset Preparation.ipynb](../master/1.Dataset&#32;Preparation.ipynb)
+- returns (saves) the more comprehensive metadata dictionary version for later use by [1_Dataset_Preparation.ipynb](../master/1_Dataset_Preparation.ipynb)
 
 [2.0_Dataset_Formation.ipynb](../master/2.Mini%20Models/2.0_Dataset_Formation.ipynb):
-- retrieves certain dictionaries created by [1.Dataset Preparation.ipynb](../master/1.Dataset&#32;Preparation.ipynb), and processes the data to obtain a sub-dataset that contains 10 artists from each parent genre
+- retrieves certain dictionaries created by [1_Dataset_Preparation.ipynb](../master/1_Dataset_Preparation.ipynb), and processes the data to obtain a sub-dataset that contains 10 artists from each parent genre
 - writes everything to a csv file called sub_dataset.csv
 - also yields certain dictionaries used for indexing purposes
 
