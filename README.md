@@ -99,9 +99,9 @@ With these files, the evaluation script can work; but for generating other evalu
 
 -[pickle_vars](../master/2.Mini%20Models/pickle_vars): sdsd
 
-..*[character](../master/2.Mini%20Models/pickle_vars/character): sds
+...[character](../master/2.Mini%20Models/pickle_vars/character): sds
 
-..*[sub_word](../master/2.Mini%20Models/pickle_vars/sub_word): sdsdsd
+...[sub_word](../master/2.Mini%20Models/pickle_vars/sub_word): sdsdsd
 
 -[saved_models](../master/2.Mini%20Models/saved_models): sdsdss
 
