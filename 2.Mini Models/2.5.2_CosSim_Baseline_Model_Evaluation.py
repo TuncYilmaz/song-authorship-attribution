@@ -133,6 +133,10 @@ similarity_dict = readPickleCosine("similarity_dict")
 '''EVALUATION'''
 
 import numpy as np
+from sklearn.metrics import f1_score
+from sklearn.metrics import precision_score
+from sklearn.metrics import recall_score
+    
 
 
 def evaluate_similarity(label_type):
@@ -150,19 +154,25 @@ def evaluate_similarity(label_type):
 
     truth = 0
     all_examples = 0
+    predictions = []
+    test_labels = []
     for test_index, similarities in similarity_dict.items():
         all_examples += 1
         max_index = np.argmax(similarities)
         closest_label = label_dictionary[np.argmax(y_train[max_index], axis=-1)+1]
         actual_label = label_dictionary[np.argmax(y[test_index], axis=-1)+1]
+        predictions.append(closest_label)
+        test_labels.append(actual_label)
         if closest_label == actual_label:
             truth += 1
         print("Example {} processed: Actual label is {} while the closest predicted label is {}".format(all_examples, actual_label, closest_label))
         
     print("Out of {} test examples, {} are identified with the correct label. Therefore the overall accuracy of this similarity model is: {}".format(all_examples, truth, (truth/all_examples)))
     
-evaluate_similarity("genre")
-#evaluate_similarity("artist")
-
+    print("Model precision is:", precision_score(predictions,test_labels, average='weighted',zero_division=1))
+    print("Model recall is:", recall_score(predictions,test_labels, average='weighted',zero_division=1))
+    print("Model f1 score is:", f1_score(predictions,test_labels, average='weighted',zero_division=1))
+    
+evaluate_similarity("artist")
         
     
