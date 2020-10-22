@@ -100,7 +100,7 @@ def occluded_prob_retriever(label):
         
     return prob_change_dict, label
 
-prob_change_dict, label = occluded_prob_retriever('Jazz')
+prob_change_dict, label = occluded_prob_retriever('Hip Hop')
 print(prob_change_dict)
 
 writePickle(prob_change_dict, str(model_type+"/prob_change_dict_"+label))
