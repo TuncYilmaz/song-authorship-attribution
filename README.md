@@ -77,6 +77,17 @@ With these files, the evaluation script can work; but for generating other evalu
 - for the second part, since the script works with probability dictionaries, you need to create your own by using [2.4.1_Occlusion_Probabilities.py](../master/2.Mini%20Models/2.4.1_Occlusion_Probabilities.py). For an easy simulation, you can find and use the [predictions for Hip-Hop](../master/2.Mini%20Models/pickle_vars/sub_word/prob_change_dict_Hip%20Hop.pkl) for the sub_word model. 
 - overall please mind the stored file names. you should either create your own model and prediction files by using scripts introduced earlier, or use the ones provided in this repository to be able to use the notebook.
 
+[2.5.1_Baseline_Cosine_Similarity_Model.py](../master/2.Mini%20Models/2.5.1_Baseline_Cosine_Similarity_Model.py):
+- this involves the construction of a naive cosine similarity baseline model, where each test sample is compared with all training examples in terms of their cosine similarities.
+- in the first section, creates the dataset splits that were used in sub_word and character models.
+- uses gensim packages and a fasttext model to tokenize the input samples, and creates a collective similarity matrix.
+- in the end it generates a similarity dictionary in which keys unique test sample lyrics, and the values are lists of cosine similarity angles between a given test sample lyrics and all training samples one by one. this dictionary is normally recorded and used by [2.5.2_CosSim_Baseline_Model_Evaluation.py](../master/2.Mini%20Models/2.5.2_CosSim_Baseline_Model_Evaluation.py) to yield accuracy scores. however due to the size of this dictionary it cannot be uploaded. users should run this script with desired configurations and generate their own similarity dictionaries to be saved under [cosine model variables folder](../master/2.Mini%20Models/cosine_model_pickle_vars).
+
+[2.5.2_CosSim_Baseline_Model_Evaluation.py](../master/2.Mini%20Models/2.5.2_CosSim_Baseline_Model_Evaluation.py):
+- in the first section, the script again creates the dataset splits that were used in sub_word and character models.
+- in the second section, for each test sample, the script finds the closest training sample vector in terms of their cosine similarities. 
+- the script can be run for either 'genre' or 'artist' labels. in each case, if the output label of a test sample and its closest training example matches, it counts as a true match, and vice versa.
+- so far this baseline model has an accuracy score of 10.42% for artist labels and 16.42% for genre labels!
 
 ### B. Files:
 -------
