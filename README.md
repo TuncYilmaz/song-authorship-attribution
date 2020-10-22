@@ -91,7 +91,7 @@ With these files, the evaluation script can work; but for generating other evalu
 
 ### B. Folders:
 -------
-1.[2.Mini Models](../master/2.Mini%20Models):
+-[2.Mini Models](../master/2.Mini%20Models):
 -[cosine_model_pickle_vars](../master/2.Mini%20Models/cosine_model_pickle_vars):
 -[occlusion_graphs](../master/2.Mini%20Models/occlusion_graphs):
 -[pickle_vars](../master/2.Mini%20Models/pickle_vars):
