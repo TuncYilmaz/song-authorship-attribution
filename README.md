@@ -91,13 +91,14 @@ With these files, the evaluation script can work; but for generating other evalu
 
 ### B. Folders:
 -------
-[2.Mini Models](../master/2.Mini%20Models):
--[cosine_model_pickle_vars](../master/2.Mini%20Models/cosine_model_pickle_vars):
--[occlusion_graphs](../master/2.Mini%20Models/occlusion_graphs):
--[pickle_vars](../master/2.Mini%20Models/pickle_vars):
--[character](../master/2.Mini%20Models/pickle_vars/character):
--[sub_word](../master/2.Mini%20Models/pickle_vars/sub_word):
--[saved_models](../master/2.Mini%20Models/saved_models):
+[2.Mini Models](../master/2.Mini%20Models): includes files and scripts used for generating the models that take a sub dataset of 12000 lyrics.
+
+-[cosine_model_pickle_vars](../master/2.Mini%20Models/cosine_model_pickle_vars): sdsd
+-[occlusion_graphs](../master/2.Mini%20Models/occlusion_graphs): sdsd
+-[pickle_vars](../master/2.Mini%20Models/pickle_vars): sdsd
+-[character](../master/2.Mini%20Models/pickle_vars/character): sds
+-[sub_word](../master/2.Mini%20Models/pickle_vars/sub_word): sdsdsd
+-[saved_models](../master/2.Mini%20Models/saved_models): sdsdss
 
 
 
