@@ -177,39 +177,5 @@ writePickle(similarity_dict, "similarity_dict")
 # print an example
 print("An example of similarity: Similarity percentages of the first test example with 10800 training examples:", similarity_dict[0])
 
-
-
-'''EVALUATION'''
-
-import numpy as np
-
-
-def evaluate_similarity(label_type):
-    if label_type not in ["genre", "artist"]: # depending on the output type of the model, we need either 'genre' or 'artist' for this argument
-        raise ValueError('argument "label_type" must be either "genre" or "artist"')
-        
-    if label_type == "genre":
-        y = y_te_genre
-        label_dictionary = readPickle(str("id2"+"genre"))
-        y_train = y_train_genre
-    else:
-        y = y_te_artist
-        label_dictionary = readPickle(str("id2"+"artist"))
-        y_train = y_train_artist
-        
-    truth = 0
-    all_examples = 0
-    for test_index, similarities in similarity_dict.items():
-        all_examples += 1
-        max_index = np.argmax(similarities)
-        closest_label = label_dictionary[np.argmax(y_train[max_index], axis=-1)+1]
-        actual_label = label_dictionary[np.argmax(y[test_index], axis=-1)+1]
-        if closest_label == actual_label:
-            truth += 1
-        
-    print("Out of {} test examples, {} are identified with the correct label. Therefore the overall accuracy of this similarity model is: {}".format(all_examples, truth, (truth/all_examples)))
-
-          
-evaluate_similarity("genre")
         
     
