@@ -64,7 +64,7 @@ With these files, the evaluation script can work; but for generating other evalu
 - uses certain functions to calculate: model accuracies; confusion matrices for different label types; precision, recall and f-score values for models; plot accuracy and loss plots across model epochs; precision and recall plots for genre label models; refined test accuracy results
 
 [2.4.1_Occlusion_Probabilities.py](../master/2.Mini%20Models/2.4.1_Occlusion_Probabilities.py): 
-<video src="../master/2.Mini%20Models/occlusion_graphs/occlusion-gif.mp4" width="320" height="200" controls preload></video>
+- <video src="../master/2.Mini%20Models/occlusion_graphs/occlusion-gif.mp4" width="320" height="200" controls preload></video>
 - for any given selected model, partially occludes the input areas one by one to record the effect of occlusion on output predictions. to have an idea about how occlusions work, please check out the short video at the very beginning of this [notebook](../master/2.Mini%20Models/2.4.2_1D_Genre_Occlusions.ipynb).
 - the script takes one model and one label at a time.
 - it iterates over all model inputs and their respective predicted labels. for any given input, if the top two model predictions contain our desired label, then the scripts starts occluding the input piece by piece, and record how the ouput probability for that label changes with respect to each input piece. with each iteration, the findings are cumulatively recorded in an occlusion probability dictionary for that label specifically, where keys are input pieces and values are lists of probability changes.
