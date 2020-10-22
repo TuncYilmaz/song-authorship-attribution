@@ -147,10 +147,7 @@ def evaluate_similarity(label_type):
         y = y_te_artist
         label_dictionary = readPickle(str("id2"+"artist"))
         y_train = y_train_artist
-    risky = list()   
-    comparison_dict = dict()
-    values = list()
-    crazy_values = list()
+
     truth = 0
     all_examples = 0
     for test_index, similarities in similarity_dict.items():
@@ -160,20 +157,12 @@ def evaluate_similarity(label_type):
         actual_label = label_dictionary[np.argmax(y[test_index], axis=-1)+1]
         if closest_label == actual_label:
             truth += 1
-            values.append(max(similarities))
-
-            crazy_values.append([x_train[max_index],x_te[test_index]])
-            if 0.8 < max(similarities) < 0.9:
-                risky.append([x_train[max_index],x_te[test_index]])
-        comparison_dict[test_index] = [actual_label, closest_label]
         print("Example {} processed: Actual label is {} while the closest predicted label is {}".format(all_examples, actual_label, closest_label))
         
     print("Out of {} test examples, {} are identified with the correct label. Therefore the overall accuracy of this similarity model is: {}".format(all_examples, truth, (truth/all_examples)))
     
-    print(values)
+evaluate_similarity("genre")
+#evaluate_similarity("artist")
 
-    writePickle(risky, "risky")
-    writePickle(comparison_dict, "comparison_dict")    
-evaluate_similarity("artist")
         
     
