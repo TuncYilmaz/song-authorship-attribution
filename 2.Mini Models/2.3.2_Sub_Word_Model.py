@@ -1,3 +1,4 @@
+
 '''!!! GO BELOW TO FUNCTION CALL FOR CHANGING VARIABLES AND OUTPUTS !!!'''
 
 # import necessary print packages
@@ -36,38 +37,24 @@ from keras.layers.convolutional import Convolution1D, MaxPooling1D
 from keras.initializers import RandomNormal
 from keras.callbacks import EarlyStopping
 
-
-
-
-# read important variables
+# read important variables (datasets)
 print('Loading data and other variables...')
-x_tr_genre = readPickle("x_tr_genre_equal")
-x_tr_artist = readPickle("x_tr_artist_equal")
-y_tr_genre = readPickle("y_tr_genre_equal")
-y_tr_artist = readPickle("y_tr_artist_equal")
-
-x_val_genre = readPickle("x_val_genre_equal")
-x_val_artist = readPickle("x_val_artist_equal")
-y_val_genre = readPickle("y_val_genre_equal")
-y_val_artist = readPickle("y_val_artist_equal")
-
-x_te_genre = readPickle("x_te_genre_equal")
-x_te_artist = readPickle("x_te_artist_equal")
-y_te_genre = readPickle("y_te_genre_equal")
-y_te_artist = readPickle("y_te_artist_equal")
+x_tr = readPickle("x_tr_artist")
+y_tr_genre = readPickle("y_tr_genre")
+y_tr_artist = readPickle("y_tr_artist")
+x_val = readPickle("x_val_artist")
+y_val_genre = readPickle("y_val_genre")
+y_val_artist = readPickle("y_val_artist")
+x_te = readPickle("x_te_artist")
+y_te_genre = readPickle("y_te_genre")
+y_te_artist = readPickle("y_te_artist")
       
 # Embedding layer Initialization
 embedding_weights = readPickle("embedding_weights")
 
-# np.random.seed(123)  # for reproducibility
-
-# Whether to save model parameters
-save = True
-model_name_path = 'params/model_name.json'
-model_weights_path = 'params/model_weights.h5'
 
 # Maximum length. Longer gets chopped. Shorter gets padded.
-maxlen = 3674 # this value can be changed in different versions
+maxlen = 2441 # this value can be changed in different versions
 
 # Model params
 
@@ -92,18 +79,12 @@ nb_epoch = 40
 # artist or genre? # if the model aims at artist labeling, the below value gets true
 artist = False
 if artist:
-    x_tr = x_tr_artist
-    x_val = x_val_artist
-    x_te = x_te_artist
     y_tr = y_tr_artist
     y_te = y_te_artist
     y_val = y_val_artist
     output_size = 120
     name = "artist_model_"+str(filter_kernels[0])+"filter_size_"+str(nb_filter)+"filters_"+str(batch_size)+"batch_"+str(nb_epoch)+"epoch"
 else:
-    x_tr = x_tr_genre
-    x_val = x_val_genre
-    x_te = x_te_genre
     y_tr = y_tr_genre
     y_te = y_te_genre
     y_val = y_val_genre
@@ -193,5 +174,3 @@ print('Test loss:', score[0])
 print('Test accuracy:', score[1])
 
 model.save("saved_models/subword_"+str(name)+".keras")
-with open('pickle_vars/history/'+str(name), 'wb') as file_pi:
-        pickle.dump(history.history, file_pi)
