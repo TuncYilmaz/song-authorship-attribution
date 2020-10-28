@@ -57,7 +57,6 @@ Please follow the enumeration of file names to have an hierarchical and chronolo
 - model parameters can be tuned after line 170
 - script outputs saved files such as text predictions, model parameters and model history
 - needs debugging for version that doesn't involve early stopping
-- can be modified further to include automatic parameter value assignment (such as vocab_size = 160 if input_type == 'char')
 
 [2.3.4_Prediction_Evaluation.ipynb](../master/2.Mini%20Models/2.3.4_Prediction_Evaluation.ipynb):
 - takes trained model predictions and history as its input
