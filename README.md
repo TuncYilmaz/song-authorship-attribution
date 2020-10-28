@@ -49,7 +49,7 @@ Please follow the enumeration of file names to have an hierarchical and chronolo
 - needs debugging for version that doesn't involve early stopping
 
 [2.3.2_Sub_Word_Model.py](../master/2.Mini%20Models/2.3.2_Sub_Word_Model.py): script that builds the model architecture with sub-word embeddings as the input
-- model parameters can be tuned after line 172
+- model parameters can be tuned between lines 56-92 and 160-162
 - script outputs saved files such as text predictions, model parameters and model history
 - needs debugging for version that doesn't involve early stopping
 
