@@ -1,5 +1,3 @@
-'''!!! GO BELOW TO FUNCTION CALL FOR CHANGING VARIABLES AND OUTPUTS !!!'''
-
 # pickle file function
 import pickle
 def writePickle(Variable, fname):
@@ -33,18 +31,17 @@ from keras.layers.convolutional import Convolution1D, MaxPooling1D
 from keras.initializers import RandomNormal
 from keras.callbacks import EarlyStopping
 
-'''---------------------------------------------------------------'''
-'''might be different for each model'''
+
 
 # read important variables (datasets)
 print('Loading data and other variables...')
-x_tr = readPickle("x_tr")
+x_tr = readPickle("x_tr_artist")
 y_tr_genre = readPickle("y_tr_genre")
 y_tr_artist = readPickle("y_tr_artist")
-x_val = readPickle("x_val")
+x_val = readPickle("x_val_artist")
 y_val_genre = readPickle("y_val_genre")
 y_val_artist = readPickle("y_val_artist")
-x_te = readPickle("x_te")
+x_te = readPickle("x_te_artist")
 y_te_genre = readPickle("y_te_genre")
 y_te_artist = readPickle("y_te_artist")
 
