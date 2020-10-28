@@ -25,7 +25,7 @@ Please follow the enumeration of file names to have an hierarchical and chronolo
 [2.0_Dataset_Formation.ipynb](../master/2.Mini%20Models/2.0_Dataset_Formation.ipynb):
 - retrieves certain dictionaries created by [1_Dataset_Preparation.ipynb](../master/1_Dataset_Preparation.ipynb), and processes the data to obtain a sub-dataset that contains 10 artists from each parent genre
 - writes everything to a csv file called sub_dataset.csv
-- also yields certain dictionaries used for indexing purposes
+- also yields certain dictionaries (stored under [pickle_vars](../master/2.Mini%20Models/pickle_vars)) used for indexing purposes
 
 [2.1_Character_Model_Preprocessing.ipynb](../master/2.Mini%20Models/2.1_Character_Model_Preprocessing.ipynb):
 - forms character embeddings that are derived from GloVe word embeddings. specifically uses the glove.6B.300d.txt model
