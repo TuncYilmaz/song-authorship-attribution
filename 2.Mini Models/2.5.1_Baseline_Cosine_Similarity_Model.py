@@ -177,5 +177,3 @@ writePickle(similarity_dict, "similarity_dict")
 # print an example
 print("An example of similarity: Similarity percentages of the first test example with 10800 training examples:", similarity_dict[0])
 
-        
-    
