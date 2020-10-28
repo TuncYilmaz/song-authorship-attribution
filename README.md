@@ -88,7 +88,7 @@ With these files, the evaluation script can work; but for generating other evalu
 - in the first section, the script again creates the dataset splits that were used in sub_word and character models.
 - in the second section, for each test sample, the script finds the closest training sample vector in terms of their cosine similarities. 
 - the script can be run for either 'genre' or 'artist' labels. in each case, if the output label of a test sample and its closest training example matches, it counts as a true match, and vice versa.
-- so far this baseline model has an accuracy score of 10.42% for artist labels and 16.42% for genre labels!
+- so far this baseline model has an accuracy score of 3.25% for artist labels and 11.25% for genre labels!
 
 ### B. Folders:
 -------
