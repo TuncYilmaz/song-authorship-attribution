@@ -151,6 +151,7 @@ def evaluate_similarity(label_type):
         y = y_te_artist
         label_dictionary = readPickle(str("id2"+"artist"))
         y_train = y_train_artist
+    
 
     truth = 0
     all_examples = 0
@@ -173,6 +174,6 @@ def evaluate_similarity(label_type):
     print("Model recall is:", recall_score(predictions,test_labels, average='weighted',zero_division=1))
     print("Model f1 score is:", f1_score(predictions,test_labels, average='weighted',zero_division=1))
     
-evaluate_similarity("artist")
+
+evaluate_similarity("genre")
         
-    
