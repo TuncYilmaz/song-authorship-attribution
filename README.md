@@ -55,6 +55,24 @@ Please follow the enumeration of file names to have an hierarchical and chronolo
 - narrows the whole thing down to a set of 44 words without known pronounciations. these will be referred to as 'UNK' later on
 - converts the datasets into phoneme versions, generates one-hot embeddings, and saves them as pickle variables
 
+##### Now, with the scripts starting with 2.1_, 2.2_ and 2.3_, we have generated all the embeddings, converted datasets and mapping dictionaries. They are all stored under relevant sections of the [pickle_vars](../master/2.Mini%20Models/pickle_vars) folder. Hereafter we'll have model training and evaluation scripts
+
+[2.4.1_Model_Training_Kim2014.py](../master/2.Mini%20Models/2.4.2_Model_Training_Zhang2016.py): model training script that is inspired by the architecture of [Kim](https://arxiv.org/pdf/1408.5882.pdf)
+- this is a model architecture with a single convolutional layer with multiple kernels. **this is the model version that yields the best results for all input types. therefore all the models mentioned in the project report have been obtained by this script**
+- inspired by this [script](https://github.com/Jverma/cnn-text-classification-keras/blob/master/text_cnn.py)
+- depending on which input type to work with, model hyper-parameters can be set between lines 44-72
+- script outputs saved files such as predictions and model history
+
+[2.4.2_Model_Training_Zhang2016.py](../master/2.Mini%20Models/2.4.2_Model_Training_Zhang2016.py): model training script that mimics the architecture introduced by [Zhang et. al.](https://arxiv.org/pdf/1509.01626.pdf)
+- this is a model architecture with 6 consecutive convolutional layers. this model yields worse results, therefore its results haven't been used & reported 
+- we have trained this model only for all input types. however this file includes a combined version for only sub_word and char embeddings
+- variables and hyper-parameters can be set after line 152
+- script outputs saved files such as predictions, model parameters and model history
+- needs debugging for version that doesn't involve early stopping
+
+[2.4.1_Model_Training_Zhang2016.py](../master/2.Mini%20Models/2.4.2_Model_Training_Zhang2016.py): model training script that mimics the architecture introduces by [Zhang et. al.](https://arxiv.org/pdf/1509.01626.pdf)
+- this is a model architecture with 6 consecutive convolutional layers
+
 [2.3.1_Character_Model.py](../master/2.Mini%20Models/2.3.1_Character_Model.py): script that builds the model architecture with character embeddings as the input
 - model parameters can be tuned after line 160
 - script outputs saved files such as text predictions, model parameters and model history
