@@ -122,15 +122,15 @@ With these files, the evaluation script can work; but for generating other evalu
 ### C. File Name Mapping:
 -------
 
-The model, prediction and history file names have been set with certain convention rules to include hyper-parameter differences. However in the report, the model names were given in abbreviated forms for simplicity. Here you can find the conversions:
-_Model File Ending --> Model Name Abbreviation_ <br>
-04:27:34 --> CH1AR-S <br>
-02:15:43 --> CH1AR-L
-20:24:13 --> SW1AR-50
-19:37:27 --> SW1AR-100
-15:03:22 --> PH1AR-F
-01:26:30 --> PH1AR-T
-03:05:46 --> CH1GE
-12:04:38 --> SW1GE
-19:27:51 --> PH1GE-F
-15:08:30 --> PH1GE-T
+The model, prediction and history file names have been set with certain convention rules to include hyper-parameter differences. However in the report, the model names were given in abbreviated forms for simplicity. Here you can find the conversions: <br/>
+_Model File Ending --> Model Name Abbreviation_ <br/>
+04:27:34 --> CH1AR-S <br/>
+02:15:43 --> CH1AR-L <br/>
+20:24:13 --> SW1AR-50 <br/>
+19:37:27 --> SW1AR-100 <br/>
+15:03:22 --> PH1AR-F <br/>
+01:26:30 --> PH1AR-T <br/>
+03:05:46 --> CH1GE <br/>
+12:04:38 --> SW1GE <br/>
+19:27:51 --> PH1GE-F <br/>
+15:08:30 --> PH1GE-T <br/>
