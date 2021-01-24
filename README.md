@@ -12,7 +12,7 @@ Please follow the enumeration of file names to have an hierarchical and chronolo
 [1_Dataset_Preparation.ipynb](../master/1_Dataset_Preparation.ipynb): 
 - takes the complete Wasabi song metadata csv file as an input and performs an initial preprocessing. this csv file is around 5 gb, and cannot be uploaded due to size restrictions. please contact me for the csv file
 - by using lyricwikia, retrieves actual song lyrics. records everything in a dictionary. uses the helper [script](../master/1.1_Helper_Lyrics_Retriever.py) to do that.
-- performs additional preprocessing such as removing non-English songs, dealing with N\A genre values, etc.
+- performs additional preprocessing such as removing non-English songs, dealing with N\A genre values, deleting duplicate entries etc.
 - contains a comprehensive genre mapping dictionary which maps all genres to 14 comprehensive parent genre classes
 - using the refined and preprocessed dataset version, plots certain graphs to analyze particular data statistics
 
@@ -21,7 +21,7 @@ Please follow the enumeration of file names to have an hierarchical and chronolo
 - gets lyrics when possible from lyricwikia
 - calculates certain additional metadata such as song_length, line_length etc.
 - returns (saves) the more comprehensive metadata dictionary version for later use by [1_Dataset_Preparation.ipynb](../master/1_Dataset_Preparation.ipynb)
-- the input metadata dictionary variable (metadata_dict.pkl) and the output metadata dictionary variable (complete_metadata_dict.pkl) are too large and cannot be added in this depository. please contact me if you need access to these files.
+- the input metadata dictionary variable (metadata_dict.pkl) and the output metadata dictionary variable (complete_metadata_dict.pkl) are too large and cannot be added into this depository. please contact me if you need access to these files.
 
 [2.0_Dataset_Formation.ipynb](../master/2.Mini%20Models/2.0_Dataset_Formation.ipynb):
 - retrieves certain dictionaries created by [1_Dataset_Preparation.ipynb](../master/1_Dataset_Preparation.ipynb), and processes the data to obtain a sub-dataset that contains 10 artists from each parent genre
