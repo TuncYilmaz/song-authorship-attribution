@@ -123,8 +123,8 @@ With these files, the evaluation script can work; but for generating other evalu
 -------
 
 The model, prediction and history file names have been set with certain convention rules to include hyper-parameter differences. However in the report, the model names were given in abbreviated forms for simplicity. Here you can find the conversions:
-_Model File Ending --> Model Name Abbreviation_
-04:27:34 --> CH1AR-S
+_Model File Ending --> Model Name Abbreviation_ <br>
+04:27:34 --> CH1AR-S <br>
 02:15:43 --> CH1AR-L
 20:24:13 --> SW1AR-50
 19:37:27 --> SW1AR-100
