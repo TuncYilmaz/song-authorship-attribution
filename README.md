@@ -70,6 +70,10 @@ Please follow the enumeration of file names to have an hierarchical and chronolo
 - script outputs saved files such as predictions, model parameters and model history
 - needs debugging for version that doesn't involve early stopping
 
+[2.5.0_Results_and_Evaluation.ipynb](../master/2.Mini%20Models/2.5.0_Results_and_Evaluation.ipynb): a notebook that uses a variety of model predictions to display certain metrics of how the results perform
+- takes trained model predictions and histories as input
+- 16 model prediction files are uploaded under [predictions folder](../master/2.Mini%20Models/pickle_vars/predictions); 4 model history files are uploaded under [history folder](../master/2.Mini%20Models/pickle_vars/history); test labels for genre and artist labels separately are uploaded under [character](../master/2.Mini%20Models/pickle_vars/character) and [sub_word](../master/2.Mini%20Models/pickle_vars/sub_word) folders.
+
 [2.3.4_Prediction_Evaluation.ipynb](../master/2.Mini%20Models/2.3.4_Prediction_Evaluation.ipynb):
 - takes trained model predictions and history as its input
 - 16 model prediction files are uploaded under [predictions folder](../master/2.Mini%20Models/pickle_vars/predictions); 4 model history files are uploaded under [history folder](../master/2.Mini%20Models/pickle_vars/history); test labels for genre and artist labels separately are uploaded under [character](../master/2.Mini%20Models/pickle_vars/character) and [sub_word](../master/2.Mini%20Models/pickle_vars/sub_word) folders.
