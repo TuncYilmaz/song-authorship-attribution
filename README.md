@@ -27,6 +27,11 @@ Please follow the enumeration of file names to have an hierarchical and chronolo
 - retrieves certain dictionaries created by [1_Dataset_Preparation.ipynb](../master/1_Dataset_Preparation.ipynb), and processes the data to obtain a sub-dataset that contains 10 artists from each parent genre
 - writes everything to a csv file called sub_dataset.csv
 - also yields certain dictionaries (stored under [pickle_vars](../master/2.Mini%20Models/pickle_vars)) used for indexing purposes
+- in the final section, includes a few plots displaying basic dataset statistics
+
+'''
+Until here, all the provided scripts have been used for (99%) preprocessing purposes. Most of the variables obtained couldn't be uploaded into the repository due to file size restrictions. If you want to skip the preprocessing phase, the resulting processed dataset (that will be used in all models henceforth) is stored under the file: sub_dataset.csv
+'''
 
 [2.1_Character_Model_Preprocessing.ipynb](../master/2.Mini%20Models/2.1_Character_Model_Preprocessing.ipynb):
 - forms character embeddings that are derived from GloVe word embeddings. specifically uses the glove.6B.300d.txt model
