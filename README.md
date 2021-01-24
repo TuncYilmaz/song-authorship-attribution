@@ -117,4 +117,20 @@ With these files, the evaluation script can work; but for generating other evalu
     - [sub_word](../master/2.Mini%20Models/pickle_vars/sub_word): sub-word model variables are saved here.
     - [history](../master/2.Mini%20Models/pickle_vars/history): a selection of model history files are saved here.
     - [predictions](../master/2.Mini%20Models/pickle_vars/predictions): a selection of model prediction files are saved here.
-  - [saved_models](../master/2.Mini%20Models/saved_models): the actual models (with parameters, weights, etc.) are saved here. due to size restrictions only one sample model file is kept. running model training scripts would save additional model files in this folder.
+  - [saved_models](../master/2.Mini%20Models/saved_models): the actual models (with parameters, weights, etc.) are saved here. due to size restrictions only one sample model file (the best individual phoneme artist label model = **PH1AR-F**) is kept. running model training scripts would save additional model files in this folder.
+  
+### C. File Name Mapping:
+-------
+
+The model, prediction and history file names have been set with certain convention rules to include hyper-parameter differences. However in the report, the model names were given in abbreviated forms for simplicity. Here you can find the conversions:
+_Model File Ending --> Model Name Abbreviation_
+04:27:34 --> CH1AR-S
+02:15:43 --> CH1AR-L
+20:24:13 --> SW1AR-50
+19:37:27 --> SW1AR-100
+15:03:22 --> PH1AR-F
+01:26:30 --> PH1AR-T
+03:05:46 --> CH1GE
+12:04:38 --> SW1GE
+19:27:51 --> PH1GE-F
+15:08:30 --> PH1GE-T
