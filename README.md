@@ -48,6 +48,13 @@ Please follow the enumeration of file names to have an hierarchical and chronolo
 - prepares the 50-dimensional embedding matrix for all sub-word pieces
 - saves important model input variables to pickle files
 
+[2.3_Phoneme_Model_Preprocessing.ipynb](../master/2.Mini%20Models/2.3_Phoneme_Model_Preprocessing.ipynb):
+- starts by converting the CMU Pronouncing Dictionary (which can be found [here](http://www.speech.cs.cmu.edu/cgi-bin/cmudict)) into a json file
+- converts all words that exist in the CMU dictionary into their equivalent pronounciation versions
+- for non-translatable words, uses other techniques for phoneme translation
+- narrows the whole thing down to a set of 44 words without known pronounciations. these will be referred to as 'UNK' later on
+- converts the datasets into phoneme versions, generates one-hot embeddings, and saves them as pickle variables
+
 [2.3.1_Character_Model.py](../master/2.Mini%20Models/2.3.1_Character_Model.py): script that builds the model architecture with character embeddings as the input
 - model parameters can be tuned after line 160
 - script outputs saved files such as text predictions, model parameters and model history
