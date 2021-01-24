@@ -70,24 +70,6 @@ Please follow the enumeration of file names to have an hierarchical and chronolo
 - script outputs saved files such as predictions, model parameters and model history
 - needs debugging for version that doesn't involve early stopping
 
-[2.4.1_Model_Training_Zhang2016.py](../master/2.Mini%20Models/2.4.2_Model_Training_Zhang2016.py): model training script that mimics the architecture introduces by [Zhang et. al.](https://arxiv.org/pdf/1509.01626.pdf)
-- this is a model architecture with 6 consecutive convolutional layers
-
-[2.3.1_Character_Model.py](../master/2.Mini%20Models/2.3.1_Character_Model.py): script that builds the model architecture with character embeddings as the input
-- model parameters can be tuned after line 160
-- script outputs saved files such as text predictions, model parameters and model history
-- needs debugging for version that doesn't involve early stopping
-
-[2.3.2_Sub_Word_Model.py](../master/2.Mini%20Models/2.3.2_Sub_Word_Model.py): script that builds the model architecture with sub-word embeddings as the input
-- model parameters can be tuned between lines 56-92 and 160-162
-- script outputs saved files such as text predictions, model parameters and model history
-- needs debugging for version that doesn't involve early stopping
-
-[2.3.3_Overall_Model_Training.py](../master/2.Mini%20Models/2.3.3_Overall_Model_Training.py): script that combines [2.3.1_Character_Model.py](../master/2.Mini%20Models/2.3.1_Character_Model.py) and [2.3.2_Sub_Word_Model.py](../master/2.Mini%20Models/2.3.2_Sub_Word_Model.py) in a single function
-- model parameters can be tuned after line 170
-- script outputs saved files such as text predictions, model parameters and model history
-- needs debugging for version that doesn't involve early stopping
-
 [2.3.4_Prediction_Evaluation.ipynb](../master/2.Mini%20Models/2.3.4_Prediction_Evaluation.ipynb):
 - takes trained model predictions and history as its input
 - 16 model prediction files are uploaded under [predictions folder](../master/2.Mini%20Models/pickle_vars/predictions); 4 model history files are uploaded under [history folder](../master/2.Mini%20Models/pickle_vars/history); test labels for genre and artist labels separately are uploaded under [character](../master/2.Mini%20Models/pickle_vars/character) and [sub_word](../master/2.Mini%20Models/pickle_vars/sub_word) folders.
