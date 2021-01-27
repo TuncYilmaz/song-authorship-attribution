@@ -128,7 +128,7 @@ Please follow the enumeration of file names to have an hierarchical and chronolo
 ### C. File Name Mapping:
 -------
 
-The model, prediction and history file names have been set with certain convention rules to include hyper-parameter differences. However in the report, the model names were given in abbreviated forms for simplicity. Here you can find the conversions: <br/>
+The model, prediction and history file names have been set with certain convention rules to include hyper-parameter differences. However in the report (**which will be uploaded later**), the model names were given in abbreviated forms for simplicity. Here you can find the conversions: <br/>
 _Model File Ending --> Model Name Abbreviation_ <br/>
 04:27:34 --> CH1AR-S <br/>
 02:15:43 --> CH1AR-L <br/>
