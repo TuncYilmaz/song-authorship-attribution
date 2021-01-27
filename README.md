@@ -70,15 +70,22 @@ Please follow the enumeration of file names to have an hierarchical and chronolo
 - script outputs saved files such as predictions, model parameters and model history
 - needs debugging for version that doesn't involve early stopping
 
-[2.5.0_Results_and_Evaluation.ipynb](../master/2.Mini%20Models/2.5.0_Results_and_Evaluation.ipynb): a notebook that uses a variety of model predictions to display certain metrics of how the results perform
-- takes trained model predictions and histories as input
-- 16 model prediction files are uploaded under [predictions folder](../master/2.Mini%20Models/pickle_vars/predictions); 4 model history files are uploaded under [history folder](../master/2.Mini%20Models/pickle_vars/history); test labels for genre and artist labels separately are uploaded under [character](../master/2.Mini%20Models/pickle_vars/character) and [sub_word](../master/2.Mini%20Models/pickle_vars/sub_word) folders.
+[2.5.1_Baseline_Cosine_Similarity_Model.py](../master/2.Mini%20Models/2.5.1_Baseline_Cosine_Similarity_Model.py):
+- this involves the construction of a naive cosine similarity baseline model, where each test sample is compared with all training examples in terms of their cosine similarities.
+- in the first section, creates the dataset splits that were used in sub_word and character models.
+- uses gensim packages and a fasttext model to tokenize the input samples, and creates a collective similarity matrix.
+- in the end it generates a similarity dictionary in which keys unique test sample lyrics, and the values are lists of cosine similarity angles between a given test sample lyrics and all training samples one by one. this dictionary is normally recorded and used by [2.5.2_CosSim_Baseline_Model_Evaluation.py](../master/2.Mini%20Models/2.5.2_CosSim_Baseline_Model_Evaluation.py) to yield accuracy scores. however due to the size of this dictionary it cannot be uploaded. users should run this script with desired configurations and generate their own similarity dictionaries to be saved under [cosine model variables folder](../master/2.Mini%20Models/cosine_model_pickle_vars).
 
-[2.3.4_Prediction_Evaluation.ipynb](../master/2.Mini%20Models/2.3.4_Prediction_Evaluation.ipynb):
-- takes trained model predictions and history as its input
-- 16 model prediction files are uploaded under [predictions folder](../master/2.Mini%20Models/pickle_vars/predictions); 4 model history files are uploaded under [history folder](../master/2.Mini%20Models/pickle_vars/history); test labels for genre and artist labels separately are uploaded under [character](../master/2.Mini%20Models/pickle_vars/character) and [sub_word](../master/2.Mini%20Models/pickle_vars/sub_word) folders.
-With these files, the evaluation script can work; but for generating other evaluations, variables should be generated via different files!
-- uses certain functions to calculate: model accuracies; confusion matrices for different label types; precision, recall and f-score values for models; plot accuracy and loss plots across model epochs; precision and recall plots for genre label models; refined test accuracy results
+[2.5.2_CosSim_Baseline_Model_Evaluation.py](../master/2.Mini%20Models/2.5.2_CosSim_Baseline_Model_Evaluation.py):
+- in the first section, the script again creates the dataset splits that were used in sub_word and character models.
+- in the second section, for each test sample, the script finds the closest training sample vector in terms of their cosine similarities. 
+- the script can be run for either 'genre' or 'artist' labels. in each case, if the output label of a test sample and its closest training example matches, it counts as a true match, and vice versa.
+- so far this baseline model has an accuracy score of 3.25% for artist labels and 11.25% for genre labels!
+
+[2.6.1_Results_and_Evaluation.ipynb](../master/2.Mini%20Models/2.6.1_Results_and_Evaluation.ipynb): a notebook that uses a variety of model predictions to display certain metrics of how the results perform
+- takes trained model predictions and histories as input
+- 14 model prediction files are uploaded under the [predictions folder](../master/2.Mini%20Models/pickle_vars/predictions); 14 model history files are uploaded under the [history folder](../master/2.Mini%20Models/pickle_vars/history); test labels for genre and artist labels separately are uploaded under [character](../master/2.Mini%20Models/pickle_vars/character), [sub_word](../master/2.Mini%20Models/pickle_vars/sub_word) and [rhyme](../master/2.Mini%20Models/pickle_vars/rhyme) folders. With these files, the evaluation script can work.
+- uses certain functions to calculate: model accuracies; confusion matrices for different label types; precision, recall and f-score values for models; plots accuracy and loss graphs across model epochs; precision and recall plots for genre label models; refined test accuracy results, combine models results...
 
 [2.4.1_Occlusion_Probabilities.py](../master/2.Mini%20Models/2.4.1_Occlusion_Probabilities.py): 
 - for any given selected model, partially occludes the input areas one by one to record the effect of occlusion on output predictions. to have an idea about how occlusions work, please check out the short video at the very beginning of this [notebook](../master/2.Mini%20Models/2.4.2_1D_Genre_Occlusions.ipynb).
@@ -93,18 +100,6 @@ With these files, the evaluation script can work; but for generating other evalu
 - in the second part, the script takes the occlusion probability dictionaries for each genre that were calculated by [2.4.1_Occlusion_Probabilities.py](../master/2.Mini%20Models/2.4.1_Occlusion_Probabilities.py), and plots the most effective 40 inputs pieces (20 with negative and 20 with positive effects) for each genre label separately. feel free to play with the plot configurations to create your own analysis.
 - for the second part, since the script works with probability dictionaries, you need to create your own by using [2.4.1_Occlusion_Probabilities.py](../master/2.Mini%20Models/2.4.1_Occlusion_Probabilities.py). For an easy simulation, you can find and use the [predictions for Hip-Hop](../master/2.Mini%20Models/pickle_vars/sub_word/prob_change_dict_Hip%20Hop.pkl) for the sub_word model. 
 - overall please mind the stored file names. you should either create your own model and prediction files by using scripts introduced earlier, or use the ones provided in this repository to be able to use the notebook.
-
-[2.5.1_Baseline_Cosine_Similarity_Model.py](../master/2.Mini%20Models/2.5.1_Baseline_Cosine_Similarity_Model.py):
-- this involves the construction of a naive cosine similarity baseline model, where each test sample is compared with all training examples in terms of their cosine similarities.
-- in the first section, creates the dataset splits that were used in sub_word and character models.
-- uses gensim packages and a fasttext model to tokenize the input samples, and creates a collective similarity matrix.
-- in the end it generates a similarity dictionary in which keys unique test sample lyrics, and the values are lists of cosine similarity angles between a given test sample lyrics and all training samples one by one. this dictionary is normally recorded and used by [2.5.2_CosSim_Baseline_Model_Evaluation.py](../master/2.Mini%20Models/2.5.2_CosSim_Baseline_Model_Evaluation.py) to yield accuracy scores. however due to the size of this dictionary it cannot be uploaded. users should run this script with desired configurations and generate their own similarity dictionaries to be saved under [cosine model variables folder](../master/2.Mini%20Models/cosine_model_pickle_vars).
-
-[2.5.2_CosSim_Baseline_Model_Evaluation.py](../master/2.Mini%20Models/2.5.2_CosSim_Baseline_Model_Evaluation.py):
-- in the first section, the script again creates the dataset splits that were used in sub_word and character models.
-- in the second section, for each test sample, the script finds the closest training sample vector in terms of their cosine similarities. 
-- the script can be run for either 'genre' or 'artist' labels. in each case, if the output label of a test sample and its closest training example matches, it counts as a true match, and vice versa.
-- so far this baseline model has an accuracy score of 3.25% for artist labels and 11.25% for genre labels!
 
 ### B. Folders:
 -------
