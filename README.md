@@ -70,6 +70,17 @@ Please follow the enumeration of file names to have an hierarchical and chronolo
 - script outputs saved files such as predictions, model parameters and model history
 - needs debugging for version that doesn't involve early stopping
 
+[2.4.3_Phoneme_Embedding_Training.py](../master/2.Mini%20Models/2.4.3_Phoneme_Embedding_Training.py): a small pytorch script for training phoneme embeddings
+- this script uses the song lyrics as inputs. due to file size, the variable containing the lyrics cannot be accessed, therefore this training cannot be replicated. for viewing purposes only
+- randomly samples 500000 3-grams of phoneme symbols taken from the complete dataset
+- then trains a 10-epoch embedding mini-model over these samples, to get an embedding matrix that is of shape (89,88) (i.e. one row for each phoneme symbol in the vocabulary + a row for padding; column number is equal to the vocabulary length)
+- the embedding matrix (i.e. the output of the script) can be found under the rhyme model [pickle variables folder](../master/2.Mini%20Models/pickle_vars/rhyme)
+
+[2.4.4_Ensemble_Training.py](../master/2.Mini%20Models/2.4.4_Ensemble_Training.py): this is the ensemble model training attempted with the char and sub_word models obtained from [2.4.2_Model_Training_Zhang2016.py](../master/2.Mini%20Models/2.4.2_Model_Training_Zhang2016.py)
+- the main idea is to get the outputs of the models before the dropout layer, and concatenate those. afterwards the concatenated layer will go through the dropout layer and the softmax layer to produce predictions
+- it didn't have a significantly better effect than basic combination of prediction probability distributions. therefore discarded eventually
+- for view purposes only & no effect on the final report
+
 [2.5.1_Baseline_Cosine_Similarity_Model.py](../master/2.Mini%20Models/2.5.1_Baseline_Cosine_Similarity_Model.py):
 - this involves the construction of a naive cosine similarity baseline model, where each test sample is compared with all training examples in terms of their cosine similarities.
 - in the first section, creates the dataset splits that were used in sub_word and character models.
