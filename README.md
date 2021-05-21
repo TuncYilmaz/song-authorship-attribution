@@ -63,6 +63,8 @@ Please follow the enumeration of file names to have an hierarchical and chronolo
 - depending on which input type to work with, model hyper-parameters can be set between lines 44-72
 - script outputs saved files such as predictions and model history
 
+[2.4.1.2_Model_Training_Kim2014_kfoldcv_Version.py](../master/2.Mini%20Models/2.4.1.2_Model_Training_Kim2014_kfoldcv_Version.py): the k-fold cross validation variant of the main model training script ([2.4.1_Model_Training_Kim2014.py](../master/2.Mini%20Models/2.4.2_Model_Training_Zhang2016.py))
+
 [2.4.2_Model_Training_Zhang2016.py](../master/2.Mini%20Models/2.4.2_Model_Training_Zhang2016.py): model training script that mimics the architecture introduced by [Zhang et. al.](https://arxiv.org/pdf/1509.01626.pdf)
 - this is a model architecture with 6 consecutive convolutional layers. this model yields worse results, therefore its results haven't been used & reported 
 - we have trained this model only for all input types. however this file includes a combined version for only sub_word and char embeddings
